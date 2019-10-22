@@ -15,21 +15,20 @@ var currentUser = User()
 var ref: DatabaseReference!
 
 //ref = Database.database().reference()
-class ScreenListChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ScreenListChatViewController: UIViewController {
     
-    var btnMemu:UIButton = UIButton()
-    var viewMenu:UIView = UIView()
-    var tableViewSlideMenu:UITableView = UITableView()
-    var mang:Array<String> = ["A", "B","C"]
-    @IBOutlet weak var tableView: UITableView!
+    var listChat:Array<User> = Array<User>()
+    
+    @IBOutlet weak var tblListchat: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hide border of cell in UITableView
+       tblListchat.separatorColor = UIColor.clear
+       tblListchat.dataSource = self
+       tblListchat.delegate = self
         navigationController?.isNavigationBarHidden = true
-        setMenu()
-        setupViewMenu()
-        SwipeGesture()
-        setupTableViewSlideMenu()
+       
         //lay thong tin current user
         let user = Auth.auth().currentUser
         if let user = user {
@@ -53,75 +52,55 @@ class ScreenListChatViewController: UIViewController, UITableViewDelegate, UITab
         }else{
             print("khong co user")
         }
+        let tableName = ref.child("Listchat").child(currentUser.id)
+        tableName.observe(.childAdded, with: { (snapshot) -> Void in
+            let postDict = snapshot.value as! [String:AnyObject]
+            if postDict != nil{
+                let email:String = postDict["email"] as! String
+                let fullName:String = postDict["fullName"] as! String
+                let linkAvatar:String = postDict["linkAvatar"] as! String
+                let user = User(id: snapshot.key, email: email, fullName: fullName, linkAvatar: linkAvatar)
+                self.listChat.append(user)
+                print(self.listChat)
+                self.tblListchat.reloadData()
+            }
+        })
     }
-    
+}
 
-    func setMenu(){
-        btnMemu = UIButton(frame: CGRect(x: 5, y: 25, width: 30, height: 30))
-        btnMemu.setBackgroundImage(UIImage(named: "iconMenu"), for: UIControl.State.normal)
-        view.addSubview(btnMemu)
-        btnMemu.addTarget(self, action: #selector(showMenu), for: UIControl.Event.touchUpInside)
+extension ScreenListChatViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return listChat.count
     }
-    func setupViewMenu(){
-        viewMenu = UIView(frame: CGRect(x: -view.frame.width/1.5, y: 55, width: view.frame.size.width/1.5, height: view.frame.height - 55 - (tabBarController?.tabBar.frame.height)! ))
-        viewMenu.backgroundColor = UIColor.lightGray
-        navigationController?.view.addSubview(viewMenu)
-        
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
-    @objc func showMenu(){
-        print("showwww")
-        if viewMenu.frame.origin.x < 0{
-            UIView.animate(withDuration: 1) {
-                self.viewMenu.frame.origin.x += self.view.frame.width / 1.5
-            }
-        }else{
-            UIView.animate(withDuration: 1) {
-                self.viewMenu.frame.origin.x -= self.view.frame.width / 1.5
-            }
-        }
-        
-    }
-    
-    func SwipeGesture(){
-        let right:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SwipeRight))
-        right.direction = .right
-        view.addGestureRecognizer(right)
-        let left:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(SwipeLeft))
-        left.direction = .left
-        view.addGestureRecognizer(left)
-    }
-    @objc func SwipeRight(){
-        UIView.animate(withDuration: 1) {
-            self.viewMenu.frame.origin.x += self.view.frame.width/1.5
-        }
-    }
-    @objc func SwipeLeft(){
-        UIView.animate(withDuration: 1) {
-            self.viewMenu.frame.origin.x -= self.view.frame.width/1.5
-        }
-    }
-    func setupTableViewSlideMenu(){
-        tableViewSlideMenu = UITableView(frame: CGRect(x: 0, y: 0, width: viewMenu.frame.size.width, height: viewMenu.frame.size.height))
-        viewMenu.addSubview(tableViewSlideMenu)
-        tableViewSlideMenu.register(cellTableView.self, forCellReuseIdentifier: "cellInSlide")
-        tableViewSlideMenu.backgroundColor = UIColor.lightGray
-        tableViewSlideMenu.delegate = self
-        tableViewSlideMenu.dataSource = self
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView:UIView = UIView()
+        headView.backgroundColor = UIColor.clear
+        return headView
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mang.count
+        return 1
     }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewSlideMenu.dequeueReusableCell(withIdentifier: "cellInSlide", for: indexPath) as! cellTableView
-        cell.backgroundColor = UIColor.lightGray
-        cell.textLabel?.text = mang[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellListChat", for: indexPath) as! ScreenListChatTableViewCell
+        cell.lblName.text = listChat[indexPath.section].fullName
+        cell.imgAvatar?.loadAvatar(link: listChat[indexPath.section].linkAvatar)
         return cell
-        
     }
-  
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        visitor = listChat[indexPath.section]
+        let url:URL = URL(string: listChat[indexPath.section].linkAvatar)!
+        do{
+            let data:Data = try Data(contentsOf: url)
+            visitor.avatar = UIImage(data: data)!
+        }catch{
+            print("loi load hinh")
+        }
+       
+    }
 }
-class cellTableView: UITableViewCell {
-    
-}
+

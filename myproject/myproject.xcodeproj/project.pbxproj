@@ -15,6 +15,7 @@
 		53B0492E23583944000A9F14 /* ScreenListFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B0492D23583944000A9F14 /* ScreenListFriendTableViewCell.swift */; };
 		53BB7FF52358AC4D00748927 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7FF42358AC4D00748927 /* BaseView.swift */; };
 		53BB7FF72358BBCF00748927 /* ScreenChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7FF62358BBCF00748927 /* ScreenChatViewController.swift */; };
+		53C61BC1235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C61BC0235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift */; };
 		53E18882235B69EF000FA20E /* ScreenChat1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E18881235B69EF000FA20E /* ScreenChat1TableViewCell.swift */; };
 		53E18884235B6A03000FA20E /* ScreenChat2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E18883235B6A03000FA20E /* ScreenChat2TableViewCell.swift */; };
 		53FD3D452352320300FE489F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FD3D442352320300FE489F /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		53B0492D23583944000A9F14 /* ScreenListFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListFriendTableViewCell.swift; sourceTree = "<group>"; };
 		53BB7FF42358AC4D00748927 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		53BB7FF62358BBCF00748927 /* ScreenChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenChatViewController.swift; sourceTree = "<group>"; };
+		53C61BC0235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListChatTableViewCell.swift; sourceTree = "<group>"; };
 		53E18881235B69EF000FA20E /* ScreenChat1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenChat1TableViewCell.swift; sourceTree = "<group>"; };
 		53E18883235B6A03000FA20E /* ScreenChat2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenChat2TableViewCell.swift; sourceTree = "<group>"; };
 		53FD3D412352320300FE489F /* myproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				53B0492D23583944000A9F14 /* ScreenListFriendTableViewCell.swift */,
 				53E18881235B69EF000FA20E /* ScreenChat1TableViewCell.swift */,
 				53E18883235B6A03000FA20E /* ScreenChat2TableViewCell.swift */,
+				53C61BC0235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				53FD3D5F235235B000FE489F /* ScreenRegisterViewController.swift in Sources */,
 				53BB7FF52358AC4D00748927 /* BaseView.swift in Sources */,
 				53FD3D452352320300FE489F /* AppDelegate.swift in Sources */,
+				53C61BC1235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift in Sources */,
 				53BB7FF72358BBCF00748927 /* ScreenChatViewController.swift in Sources */,
 				53FD3D472352320300FE489F /* SceneDelegate.swift in Sources */,
 			);

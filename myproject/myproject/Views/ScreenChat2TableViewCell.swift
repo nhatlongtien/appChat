@@ -14,7 +14,18 @@ class ScreenChat2TableViewCell: UITableViewCell {
     @IBOutlet weak var lblMessage: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // custom lblMessage
+        lblMessage.numberOfLines = 0
+        lblMessage.layer.cornerRadius = 10
+        lblMessage.clipsToBounds = true
+        lblMessage.sizeToFit()
+        //custom imgAvatar
+        imgAvatar.layer.borderWidth = 1
+        imgAvatar.layer.borderColor = UIColor.lightGray.cgColor
+        imgAvatar.layer.cornerRadius = imgAvatar.frame.height/2
+        imgAvatar.clipsToBounds = true
+        imgAvatar.contentMode = .scaleAspectFill
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

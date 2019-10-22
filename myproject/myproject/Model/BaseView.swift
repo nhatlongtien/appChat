@@ -36,3 +36,40 @@ extension UIImageView{
         
     }
 }
+
+extension UIButton{
+    func skin(y: Bool){
+        self.titleLabel?.numberOfLines = 1
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+        self.layer.cornerRadius = 10
+        if y {
+            self.layer.borderColor = UIColor.blue.cgColor
+            self.layer.borderWidth = 1
+            self.tintColor = UIColor.blue
+            self.backgroundColor = UIColor.white
+        }
+    }
+}
+
+
+
+/*extension UIButton
+{
+    func skin(b:Bool)
+    {
+        self.titleLabel?.numberOfLines = 1;
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+        self.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+        self.layer.cornerRadius = 10
+        if(b)
+        {
+            self.layer.borderColor = UIColor.red().cgColor
+            self.layer.borderWidth = 1
+            self.tintColor = UIColor.red()
+            self.backgroundColor = UIColor.white()
+        }
+        
+    }
+} */
+

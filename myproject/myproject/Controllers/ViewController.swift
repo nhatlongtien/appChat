@@ -10,10 +10,18 @@ import UIKit
 import Firebase
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btn_Register: UIButton!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var btnForgetPassword: UIButton!
+    @IBOutlet weak var btnRegister: NSLayoutConstraint!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnLogin.skin(y: true)
+        btnForgetPassword.skin(y: false)
+        btn_Register.skin(y: true)
+        
         txtPassword.isSecureTextEntry = true
         //hide keyboard when tap empty area on the view
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

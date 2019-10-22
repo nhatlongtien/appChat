@@ -14,7 +14,11 @@ class ScreenListFriendViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-      
+        
+        //hide bother of cell in UITableWiew
+        tblistFriend.separatorColor = UIColor.clear
+        //to show navigation bar
+        navigationController?.isNavigationBarHidden = false
         tblistFriend.dataSource = self
         tblistFriend.delegate = self
         let tableName = ref.child("ListFriend")
@@ -44,23 +48,36 @@ class ScreenListFriendViewController: UIViewController {
 
 extension ScreenListFriendViewController: UITableViewDataSource, UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return listFriend.count
+    }
+    //set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    //make the background color show thought
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print(listFriend.count)
-        return listFriend.count
+        return 1
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellListFriend", for: indexPath) as! ScreenListFriendTableViewCell
-        cell.lbl_name.text =  listFriend[indexPath.row].fullName
-        cell.imgAvatar.loadAvatar(link: listFriend[indexPath.row].linkAvatar)
+        // note that indexPath.section is used rather than indexPath.row
+        cell.lbl_name.text =  listFriend[indexPath.section].fullName
+        cell.imgAvatar.loadAvatar(link: listFriend[indexPath.section].linkAvatar)
+       
         
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        visitor = listFriend[indexPath.row]
+        visitor = listFriend[indexPath.section]
+        //nen phan luon de ap chay nhanh hon (lam sau)
         let url:URL = URL(string: visitor.linkAvatar)!
         do{
             let data:Data = try Data(contentsOf: url)
@@ -71,5 +88,6 @@ extension ScreenListFriendViewController: UITableViewDataSource, UITableViewDele
         
         print(visitor)
     }
+    
     
 }

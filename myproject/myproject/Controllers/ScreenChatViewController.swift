@@ -21,6 +21,8 @@ class ScreenChatViewController: UIViewController, UITextFieldDelegate{
     var arrUserChat:Array<User> = Array<User>()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hide bother of cell in UITableView
+        tblChat.separatorColor = UIColor.clear
         tblChat.dataSource = self
         tblChat.delegate = self
         arrIDChat.append(currentUser.id)
@@ -28,6 +30,8 @@ class ScreenChatViewController: UIViewController, UITextFieldDelegate{
         arrIDChat.sort()
         let key:String = "\(arrIDChat[0])\(arrIDChat[1]))"
         print(key)
+        //show navigation bar
+        navigationController?.isNavigationBarHidden = false
         //tao table Chat tren firebase
         tableName = ref.child("Chat").child(key)
         iMessage.delegate = self
@@ -65,7 +69,7 @@ class ScreenChatViewController: UIViewController, UITextFieldDelegate{
             //print(keyboardHeight)
             //change the y of view when keyboad appearing
             if notification.name == UIResponder.keyboardWillChangeFrameNotification || notification.name == UIResponder.keyboardWillShowNotification {
-                view.frame.origin.y = -(keyboardHeight - 60 )
+                view.frame.origin.y = -(keyboardHeight)
             }else{
                 view.frame.origin.y = 0
             }
@@ -90,6 +94,17 @@ class ScreenChatViewController: UIViewController, UITextFieldDelegate{
         ]
         tableName.childByAutoId().setValue(mess)
         iMessage.text = ""
+        //make table list Chat on fireBase
+        if arrtxtChat.count == 0{
+            addListChat(user1: currentUser, user2: visitor)
+            addListChat(user1: visitor, user2: currentUser)
+        }
+    }
+    //them du lieu vao table list chat tren firebase
+    func addListChat(user1: User,user2: User){
+        let tableNameListChat = ref.child("Listchat").child(user1.id).child(user2.id)
+        let user:Dictionary<String,String> = ["id": user2.id,"fullName":user2.fullName,"email":user2.email,"linkAvatar":user2.linkAvatar]
+        tableNameListChat.setValue(user)
     }
 }
 extension ScreenChatViewController: UITableViewDelegate, UITableViewDataSource{
@@ -103,7 +118,7 @@ extension ScreenChatViewController: UITableViewDelegate, UITableViewDataSource{
         if currentUser.id == arrUserChat[indexPath.row].id{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath) as! ScreenChat2TableViewCell
             cell.lblMessage.text = arrtxtChat[indexPath.row]
-            cell.imgAvatar.image = currentUser.avatar
+            cell.imgAvatar.loadAvatar(link: currentUser.linkAvatar)
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! ScreenChat1TableViewCell
