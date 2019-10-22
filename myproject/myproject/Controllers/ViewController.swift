@@ -29,13 +29,13 @@ class ViewController: UIViewController {
         //tat navigation bar
         navigationController?.isNavigationBarHidden = true
         //dang xuat tai khoan khi load ung dung
-        let firebaseAuth = Auth.auth()
+       /* let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
             print("ban da dang xuat")
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
-        }
+        } */
         isLogin()
         
     }

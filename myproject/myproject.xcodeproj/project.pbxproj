@@ -12,6 +12,7 @@
 		5349ECDC2355783D00E98EF6 /* ScreenListChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349ECDB2355783D00E98EF6 /* ScreenListChatViewController.swift */; };
 		5349ECDE2355787B00E98EF6 /* ScreenListFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349ECDD2355787B00E98EF6 /* ScreenListFriendViewController.swift */; };
 		5349ECE02355BE8B00E98EF6 /* HomeTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5349ECDF2355BE8B00E98EF6 /* HomeTapBarController.swift */; };
+		537DE075235EF6E00025C8A1 /* ScreenInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537DE074235EF6E00025C8A1 /* ScreenInformationViewController.swift */; };
 		53B0492E23583944000A9F14 /* ScreenListFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B0492D23583944000A9F14 /* ScreenListFriendTableViewCell.swift */; };
 		53BB7FF52358AC4D00748927 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7FF42358AC4D00748927 /* BaseView.swift */; };
 		53BB7FF72358BBCF00748927 /* ScreenChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BB7FF62358BBCF00748927 /* ScreenChatViewController.swift */; };
@@ -34,6 +35,7 @@
 		5349ECDB2355783D00E98EF6 /* ScreenListChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListChatViewController.swift; sourceTree = "<group>"; };
 		5349ECDD2355787B00E98EF6 /* ScreenListFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListFriendViewController.swift; sourceTree = "<group>"; };
 		5349ECDF2355BE8B00E98EF6 /* HomeTapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTapBarController.swift; sourceTree = "<group>"; };
+		537DE074235EF6E00025C8A1 /* ScreenInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenInformationViewController.swift; sourceTree = "<group>"; };
 		53B0492D23583944000A9F14 /* ScreenListFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenListFriendTableViewCell.swift; sourceTree = "<group>"; };
 		53BB7FF42358AC4D00748927 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		53BB7FF62358BBCF00748927 /* ScreenChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenChatViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				5349ECDD2355787B00E98EF6 /* ScreenListFriendViewController.swift */,
 				5349ECDF2355BE8B00E98EF6 /* HomeTapBarController.swift */,
 				53BB7FF62358BBCF00748927 /* ScreenChatViewController.swift */,
+				537DE074235EF6E00025C8A1 /* ScreenInformationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				53BB7FF52358AC4D00748927 /* BaseView.swift in Sources */,
 				53FD3D452352320300FE489F /* AppDelegate.swift in Sources */,
 				53C61BC1235DF5C200BA8F48 /* ScreenListChatTableViewCell.swift in Sources */,
+				537DE075235EF6E00025C8A1 /* ScreenInformationViewController.swift in Sources */,
 				53BB7FF72358BBCF00748927 /* ScreenChatViewController.swift in Sources */,
 				53FD3D472352320300FE489F /* SceneDelegate.swift in Sources */,
 			);
