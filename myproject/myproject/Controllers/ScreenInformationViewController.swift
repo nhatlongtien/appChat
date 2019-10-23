@@ -23,6 +23,12 @@ class ScreenInformationViewController: UIViewController {
         imgAvatar.layer.cornerRadius = imgAvatar.frame.height/2
         imgAvatar.clipsToBounds = true
         imgAvatar.contentMode = .scaleAspectFill
+        //custom lblUserEmail
+        lblUserEmail.numberOfLines = 1
+        
+        //custom lblUserName
+        lbluserName.numberOfLines = 1
+        
         
         //load information of current user:
         lbluserName.text = "Full name: \(currentUser.fullName)"

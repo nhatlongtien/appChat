@@ -19,6 +19,7 @@ class ScreenChat1TableViewCell: UITableViewCell {
         lblMessage.layer.cornerRadius = 10
         lblMessage.clipsToBounds = true
         lblMessage.sizeToFit()
+        
         //custom lblimgAvatar
         imgAvatar.layer.borderWidth = 1
         imgAvatar.layer.borderColor = UIColor.lightGray.cgColor
